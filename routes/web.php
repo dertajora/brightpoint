@@ -29,5 +29,5 @@ Route::group(['middleware' => ['log_web']], function () {
 
 Route::group(['middleware' => ['auth', 'log_web']], function () {
    	Route::get('/dashboard', 'Dashboard\DashboardController@home');
-
+   	Route::get('/', 'Dashboard\DashboardController@home');
 });

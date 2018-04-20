@@ -18,7 +18,7 @@ Home Page
           </div>
         </div>
         <div class="box-body">
-          <p><h4>Welcome to New Alpha Version of HappyDeliv Dashboard !</h4></p>
+          <p><h4>Welcome to New Alpha Version of BrightPoint Dashboard !</h4></p>
           
           <br />
           <div class="row">

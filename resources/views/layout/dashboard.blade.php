@@ -12,7 +12,7 @@
 	    </script>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>HappyDeliv | Dashboard</title>
+		<title>BrightPoint | Dashboard</title>
 		<!-- Tell the browser to be responsive to screen width -->
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 		<!-- Bootstrap 3.3.7 -->
@@ -64,7 +64,7 @@
 			      <!-- logo mini setelah tampilan berubah dari dinamis -->
 			      <!-- <span class="logo-mini"><i class="fa fa-compress"></i></span> -->
 			      <!-- logo for regular state and mobile devices -->
-			      <span class="logo-lg"><b>HappyDeliv</b></span>
+			      <span class="logo-lg"><b>BrightPoint</b></span>
 			    </a>
 			    <!-- Header Navbar: style can be found in header.less -->
 			    <nav class="navbar navbar-static-top">
@@ -141,7 +141,7 @@
 			              <!-- Menu Body -->
 			              <li class="user-body">
 			                <div class="row">
-			                  <center>Company : {{session('company_name')}}</center>
+			                  <center>Company : </center>
 			                </div>
 			                <!-- /.row -->
 			              </li>
@@ -242,7 +242,7 @@
 			    <div class="pull-right hidden-xs">
 			      <b>Version</b> 0.0.0
 			    </div>
-			    <strong>Copyright &copy; 2018 HappyDeliv Developer Team</a>.</strong> All rights
+			    <strong>Copyright &copy; 2018 BrightPoint Developer Team</a>.</strong> All rights
 			    reserved.
 			  </footer>
 
