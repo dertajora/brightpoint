@@ -24,6 +24,6 @@ Route::group(['middleware' => ['log_api']], function () {
 
 Route::group(['middleware' => ['check_param','log_api']], function () {
     Route::post('/user_information', 'API\UserController@user_information');
-    Route::post('/list_spbu', 'API\GasStationController@list_spbu');
+    Route::post('/nearest_spbu', 'API\GasStationController@nearest_spbu');
     Route::post('/detail_spbu', 'API\GasStationController@detail_spbu');
 });
