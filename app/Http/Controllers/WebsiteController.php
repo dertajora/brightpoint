@@ -35,7 +35,8 @@ class WebsiteController extends Controller
 
         // auth user
         Auth::login($user);
-        
+        $role = Roles::where('id', $user->role_id)->first();
+        session(['role_name' => $role->name]);
         // redirect to intended menu/url
         return redirect()->intended('/dashboard');
 

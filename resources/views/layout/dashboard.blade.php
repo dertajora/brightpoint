@@ -141,7 +141,7 @@
 			              <!-- Menu Body -->
 			              <li class="user-body">
 			                <div class="row">
-			                  <center>Company : </center>
+			                  
 			                </div>
 			                <!-- /.row -->
 			              </li>
@@ -181,11 +181,10 @@
 					</div> <!-- /user-panel --> --}}
 			        
 			          
-			        @if(Auth::user()->role_id == 4)
-			        	@include('layout.sidebar_staff')
-			            @include('layout.sidebar_owner')
+			        @if(Auth::user()->role_id == 2)
+			        	@include('layout.sidebar_operator')
 			        @elseif(Auth::user()->role_id == 3)
-			            @include('layout.sidebar_staff')
+			            @include('layout.sidebar_admin')
 
 			        @endif
 			        

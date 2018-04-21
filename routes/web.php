@@ -30,4 +30,18 @@ Route::group(['middleware' => ['log_web']], function () {
 Route::group(['middleware' => ['auth', 'log_web']], function () {
    	Route::get('/dashboard', 'Dashboard\DashboardController@home');
    	Route::get('/', 'Dashboard\DashboardController@home');
+
+   	Route::get('/users', 'Dashboard\UserController@index');
+   	Route::get('/users/add', 'Dashboard\UserController@add');
+   	Route::post('/users/save', 'Dashboard\UserController@save');
+
+   	Route::get('/manage_spbu', 'Dashboard\SPBUController@index');
+   	Route::get('/manage_spbu/add', 'Dashboard\SPBUController@add');
+      Route::post('/manage_spbu/save', 'Dashboard\SPBUController@save');
+
+      Route::get('/manage_products', 'Dashboard\ProductController@index');
+      Route::get('/manage_products/add', 'Dashboard\ProductController@add');
+      Route::post('/manage_products/save', 'Dashboard\ProductController@save');
+      Route::get('/manage_products/edit/{id}', 'Dashboard\ProductController@edit');
+      Route::post('/manage_products/update', 'Dashboard\ProductController@update');
 });
