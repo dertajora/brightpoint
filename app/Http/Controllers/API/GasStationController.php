@@ -22,7 +22,7 @@ class GasStationController extends Controller
             return response()->json(['result_code' => 2, 'result_message' => 'Current Latitude and Longitude is mandatory', 'data' => '']);
         
         $nearest_spbu = DB::table('spbu')
-                            ->select('name','address','latitude','longitude',
+                            ->select('id','name','address','latitude','longitude',
                                      'is_mosque','is_toilet', 'is_brightwash',
                                      'is_snack_store','is_olimart',
                                      DB::raw('( 6371 * ACOS( COS( RADIANS( '.$data->current_lat.' ) ) * COS( RADIANS( latitude ) ) * COS( RADIANS( longitude ) 
@@ -51,6 +51,14 @@ class GasStationController extends Controller
                                      'is_mosque','is_toilet', 'is_brightwash',
                                      'is_snack_store','is_olimart')
                             ->where('id',$data->spbu_id)->first();
+
+        $response['images'] = DB::table('spbu_images')
+                            ->select('filename')
+                            ->get();
+
+        foreach ($response['images'] as $row) {
+            $row->filename = url('/')."/public/images/spbu/".$row->filename;
+        }
 
         $response['products'] = DB::table('products')
                             ->select('name','price','is_available')
