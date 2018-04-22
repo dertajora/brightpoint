@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddOperatorIdToSpbu extends Migration
+class AddStatusToQueueTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class AddOperatorIdToSpbu extends Migration
      */
     public function up()
     {
-        Schema::table('spbu', function (Blueprint $table) {
-            $table->integer('operator_id')->default(0);
+        Schema::table('queue_carwash', function (Blueprint $table) {
+            $table->integer('status')->default(0);
+            $table->string('customer')->nullable();
         });
     }
 
@@ -25,8 +26,9 @@ class AddOperatorIdToSpbu extends Migration
      */
     public function down()
     {
-        Schema::table('spbu', function (Blueprint $table) {
-            $table->dropColumn('operator_id');
+        Schema::table('queue_carwash', function (Blueprint $table) {
+            $table->dropColumn('status');
+            $table->dropColumn('customer');
         });
     }
 }

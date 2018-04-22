@@ -37,6 +37,7 @@
 		<!-- bootstrap wysihtml5 - text editor -->
 		<link rel="stylesheet" href="{{ URL::asset('public/dist')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 		<!-- DataTables v1.10.16 -->
+		<link rel="stylesheet" href="{{ URL::asset('public/dist')}}/css/bootstrap-datetimepicker.min.css">
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
 
 		<!-- Favicon -->
@@ -284,6 +285,7 @@
 		<script src="{{ URL::asset('public/dist')}}/bower_components/fastclick/lib/fastclick.js"></script>
 		<!-- AdminLTE App -->
 		<script src="{{ URL::asset('public/dist')}}/js/adminlte.min.js"></script>
+		<script src="{{ URL::asset('public/dist')}}/js/bootstrap-datetimepicker.min.js"></script>
 		<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 		<!-- <script src="{{ URL::asset('dist')}}/js/pages/dashboard.js"></script> -->
 		<!-- AdminLTE for demo purposes -->

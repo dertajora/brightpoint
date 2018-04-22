@@ -44,4 +44,14 @@ Route::group(['middleware' => ['auth', 'log_web']], function () {
       Route::post('/manage_products/save', 'Dashboard\ProductController@save');
       Route::get('/manage_products/edit/{id}', 'Dashboard\ProductController@edit');
       Route::post('/manage_products/update', 'Dashboard\ProductController@update');
+
+      Route::get('/config_carwash', 'Dashboard\CarwashController@config');
+      Route::get('/config_carwash/edit/{id}', 'Dashboard\CarwashController@edit');
+      Route::post('/config_carwash/update', 'Dashboard\CarwashController@update');
+
+      Route::get('/manage_queue', 'Dashboard\QueueController@index');
+      Route::get('/manage_queue/add', 'Dashboard\QueueController@add');
+      Route::post('/manage_queue/save', 'Dashboard\QueueController@save');
+      Route::get('/manage_queue/finish/{id}', 'Dashboard\QueueController@finish');
+
 });

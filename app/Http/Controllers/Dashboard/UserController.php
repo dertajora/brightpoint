@@ -35,7 +35,7 @@ class UserController extends Controller
         $user->phone = $request->get('phone');
         $user->email = $request->get('email');
         $user->name = $request->get('name');
-        $user->password = Crypt::encrypt('password');
+        $user->password = Crypt::encrypt($request->get('password'));
         $user->role_id = $request->get('role');
         $user->save(); 
 
