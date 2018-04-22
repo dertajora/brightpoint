@@ -4,7 +4,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
-// use App\SPBU;
+use App\SPBU;
+use App\QueueCarwash;
 
 class BrightwashController extends Controller
 {
@@ -46,7 +47,7 @@ class BrightwashController extends Controller
             return response()->json(['result_code' => 2, 'result_message' => 'SPBU ID is mandatory', 'data' => '']);
         
         $detail = DB::table('spbu')
-                            ->select('id','name','latitude','longitude','address')
+                            ->select('id','capacity','name','latitude','longitude','address')
                             ->where('id',$data->spbu_id)->first();
 
         $detail->current_queue = rand(0,2);
@@ -59,10 +60,39 @@ class BrightwashController extends Controller
     public function book_wash(Request $request){
 
         $data = json_decode($request->get('data'));
+        $user_info = json_decode($request->get('user_info'));
         if (empty($data->spbu_id)) 
             return response()->json(['result_code' => 2, 'result_message' => 'SPBU ID is mandatory', 'data' => '']);
         
-        return response()->json(['result_code' => 1, 'result_message' => 'Booking a wash is success', 'data' => '']);
+        $last_queue = DB::table('queue_carwash')
+                    ->where('queue_date', date('Y-m-d'))
+                    ->where('spbu_id',$data->spbu_id)
+                    ->orderBy('created_at','desc')
+                    ->pluck('queue_no');
+
+        if (count($last_queue) == 0) {
+            $queue_no = 1;
+        }else{
+            $queue_no = $last_queue[0] + 1;
+        }
+
+        $user_id = User::where('phone', $user_info->phone)->pluck('id');
+        $spbu = SPBU::where('id', $data->spbu_id)->pluck('name');
+
+        $queue = new QueueCarwash;
+        $queue->spbu_id = $data->spbu_id;
+        $queue->queue_date =  date('Y-m-d');
+        $queue->spbu_id =  $data->spbu_id;
+        $queue->queue_no =  $queue_no;
+        $queue->user_id =  $user_id[0];
+        $queue->source =  2; //1 means comes from manual queue
+        $queue->status =  1;
+        $queue->created_by =  0;
+        $queue->save(); 
+
+        $response['queue_no'] = $queue_no;
+        $response['spbu_name'] = $spbu[0];
+        return response()->json(['result_code' => 1, 'result_message' => 'Booking a wash is success', 'data' => $response]);
     }
 
 }
