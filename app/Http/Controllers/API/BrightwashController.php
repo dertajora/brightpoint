@@ -141,8 +141,10 @@ class BrightwashController extends Controller
         foreach ($my_schedule as $row) {
             if ($row->status == 1) {
                 $row->current_queue = $this->select_current_queue($row->spbu_id);
+                $row->estimation_time = ($row->$queue_no - $row->current_queue ) * 30;
             }else{
                 $row->current_queue = 0;
+                $row->estimation_time = 0;
             }
 
             if ($row->status == 1) {
