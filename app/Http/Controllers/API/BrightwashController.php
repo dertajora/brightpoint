@@ -155,7 +155,7 @@ class BrightwashController extends Controller
 
         }
         
-        return response()->json(['result_code' => 1, 'result_message' => 'Booking a wash is success', 'data' => $my_schedule]);
+        return response()->json(['result_code' => 1, 'result_message' => 'List schedule sent', 'data' => $my_schedule]);
     }
 
 }
