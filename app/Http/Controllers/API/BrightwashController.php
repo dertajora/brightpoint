@@ -142,7 +142,7 @@ class BrightwashController extends Controller
             if ($row->status == 1) {
                 $row->current_queue = $this->select_current_queue($row->spbu_id);
             }else{
-                $row->current_queue = "-";
+                $row->current_queue = 0;
             }
 
             if ($row->status == 1) {
