@@ -21,6 +21,11 @@ $(function() {
     });
 });
 
+function call_queue(customer){
+    swal("Calling User " + customer);  
+}
+
+
 
 $( document ).ready(function() {
 
@@ -120,7 +125,7 @@ $( document ).ready(function() {
                             </td> 
                             <td>
                                 @if(!empty($row->customer_registered))
-                                    {{$customer_registered}}
+                                    {{$row->customer_registered}}
                                 @else
                                     {{$row->customer}}
                                 @endif
@@ -135,9 +140,15 @@ $( document ).ready(function() {
                                 @endif
                             </td>
                             <td>
-                                <a href="" class="btn btn-sm btn-flat btn-warning">Call</a>
-                                <a href="{{url('/')}}/manage_queue/cancel/{{$row->id}}" class="btn btn-sm btn-flat btn-danger">Cancel</a>
-                                <a href="{{url('/')}}/manage_queue/finish/{{$row->id}}" class="btn btn-sm btn-flat btn-success">Finish</a>
+                                @if($row->status == 1)
+                                  @if(!empty($row->customer_registered))
+                                    <a href="javascript:void(0)" onclick="call_queue('{{$row->customer_registered}}')" class="btn btn-sm btn-flat btn-warning">Call</a>
+                                  @else
+                                    <a href="javascript:void(0)" onclick="call_queue('{{$row->customer}}')" class="btn btn-sm btn-flat btn-warning">Call</a>
+                                  @endif
+                                  <a href="{{url('/')}}/manage_queue/cancel/{{$row->id}}" class="btn btn-sm btn-flat btn-danger">Cancel</a>
+                                  <a href="{{url('/')}}/manage_queue/finish/{{$row->id}}" class="btn btn-sm btn-flat btn-success">Finish</a>
+                                @endif
                             </td>
                             
                         </tr>
@@ -163,6 +174,7 @@ $( document ).ready(function() {
 
 @section('script_custom')
 <script type="text/javascript">
+
 $(document).ready(function() {
     $('#tableFullFeatures').DataTable();
 });

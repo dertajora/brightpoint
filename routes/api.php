@@ -29,4 +29,5 @@ Route::group(['middleware' => ['check_param','log_api']], function () {
     Route::post('/find_brightwash', 'API\BrightwashController@find_brightwash');
     Route::post('/detail_brightwash', 'API\BrightwashController@detail_brightwash');
     Route::post('/confirm_queue', 'API\BrightwashController@book_wash');
+    Route::post('/wash_schedule', 'API\BrightwashController@wash_schedule');
 });
